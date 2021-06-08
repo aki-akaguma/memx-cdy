@@ -1,0 +1,38 @@
+[package]
+name = "memx-cdy"
+version = "0.1.0"
+authors = ["aki <aki.akaguma@hotmail.com>"]
+edition = "2018"
+description = "memory functions like a libc memcmp(), memchr(), memmem(), memcpy(), memset()"
+keywords = ["memcmp", "memchr", "memmem"]
+categories = ["algorithms"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/aki-akaguma/memx-cdy"
+
+[lib]
+crate-type = ["cdylib"]
+# crate-type = ["staticlib"]
+
+[features]
+default = []
+debian_build = []
+
+[dependencies]
+memx = "0.1"
+libc = "0.2"
+
+[package.metadata.deb]
+features = ["debian_build"]
+section = "AAA-lib"
+priority = "optional"
+maintainer = "aki <aki.akaguma@hotmail.com>"
+extended-description = """\
+memory functions like a libc memcmp(), memchr(), memmem(), memcpy(), memset()
+"""
+depends = "$auto"
+separate-debug-symbols = true
+assets = [
+    ["target/release/libmemx_cdy.so", "usr/lib/libmemx_cdy.so.0.1", "644"],
+    ["README.md", "usr/share/doc/memx-cdy/", "644"],
+]
