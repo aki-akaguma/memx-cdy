@@ -19,8 +19,20 @@ default = []
 debian_build = []
 
 [dependencies]
-memx = "0.1"
 libc = "0.2"
+
+[build-dependencies]
+cc = "1.0"
+
+[dev-dependencies]
+criterion = "0.3"
+memchr = "2.4"
+memx = "0.1"
+
+[workspace]
+members = [
+    "xtask",
+]
 
 [package.metadata.deb]
 features = ["debian_build"]
@@ -36,3 +48,43 @@ assets = [
     ["target/release/libmemx_cdy.so", "usr/lib/libmemx_cdy.so.0.1", "644"],
     ["README.md", "usr/share/doc/memx-cdy/", "644"],
 ]
+
+[[bench]]
+name = "bench-memchr"
+path = "benches/bench-memchr.rs"
+harness = false
+
+[[bench]]
+name = "bench-memcmp"
+path = "benches/bench-memcmp.rs"
+harness = false
+
+[[bench]]
+name = "bench-memcpy"
+path = "benches/bench-memcpy.rs"
+harness = false
+
+[[bench]]
+name = "bench-memeq"
+path = "benches/bench-memeq.rs"
+harness = false
+
+[[bench]]
+name = "bench-memmem"
+path = "benches/bench-memmem.rs"
+harness = false
+
+[[bench]]
+name = "bench-memrchr"
+path = "benches/bench-memrchr.rs"
+harness = false
+
+[[bench]]
+name = "bench-memrmem"
+path = "benches/bench-memrmem.rs"
+harness = false
+
+[[bench]]
+name = "bench-memset"
+path = "benches/bench-memset.rs"
+harness = false
