@@ -50,6 +50,10 @@ or
 $ export LD_PRELOAD=/usr/lib/libmemx_cdy.so.0.1
 ```
 
+## Changelogs
+
+[This crate's changelog here.](https://github.com/aki-akaguma/memx-cdy/blob/main/CHANGELOG.md)
+
 # References
 
 - [`memx`](https://crates.io/crates/memx) - rust crate for the fast mem lib
