@@ -1,5 +1,28 @@
 use libc::{c_int, c_void, size_t};
 
+/// This is the dummy function fot the easy linking.
+///
+/// This `memx_init()` function do nothing. However, links are simplified. 
+///
+/// # Example:
+/// In your binary package, the main function is like this.
+/// ```
+/// fn main () {
+///     memx_cdy::memx_init(); // fast mem operation.
+/// }
+/// ```
+/// In your library package, good with any function.
+/// ```
+/// fn xxx_func () {
+///     memx_cdy::memx_init(); // fast mem operation.
+/// }
+/// ```
+///
+#[no_mangle]
+pub extern "C" fn memx_init() {
+    // Nothing todo
+}
+
 #[no_mangle]
 pub extern "C" fn memchr(cx: *const c_void, c: c_int, n: size_t) -> *mut c_void {
     let buf = unsafe { std::slice::from_raw_parts(cx as *const u8, n) };
@@ -59,7 +82,9 @@ pub extern "C" fn memmem(
     }
 }
 
-#[cfg(any(crate_type = "cdylib",crate_type = "staticlib"))]
+// bug: in the case that target is "xxx-musl",
+// bug: ld: error: duplicate symbol: memcpy
+#[cfg(not(target_env = "musl"))]
 #[no_mangle]
 pub extern "C" fn memcpy(dest: *mut c_void, src: *const c_void, n: size_t) -> *mut c_void {
     let a = unsafe { std::slice::from_raw_parts_mut(dest as *mut u8, n) };
@@ -68,7 +93,6 @@ pub extern "C" fn memcpy(dest: *mut c_void, src: *const c_void, n: size_t) -> *m
     dest
 }
 
-#[cfg(any(crate_type = "cdylib",crate_type = "staticlib"))]
 #[no_mangle]
 pub extern "C" fn memset(dest: *mut c_void, c: c_int, n: size_t) -> *mut c_void {
     let buf = unsafe { std::slice::from_raw_parts_mut(dest as *mut u8, n) };
