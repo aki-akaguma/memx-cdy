@@ -1,6 +1,6 @@
 [package]
 name = "memx-cdy"
-version = "0.1.3"
+version = "0.1.4"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 edition = "2018"
 description = "The fast memory functions like a libc memcmp(), memchr(), memmem(), memcpy(), memset()"
@@ -12,6 +12,7 @@ repository = "https://github.com/aki-akaguma/memx-cdy"
 
 [lib]
 crate-type = ["cdylib", "staticlib", "rlib"]
+path = "src/lib.rs"
 
 [features]
 default = []

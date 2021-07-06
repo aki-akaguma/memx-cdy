@@ -1,3 +1,77 @@
+/*!
+c interface of memx: the fast memory functions like libc memcmp(), memchr(), memmem(), memcpy(), memset()
+
+# Features
+
+* Faster os libc and musl libc
+* Replace dynamic os libc using LD_PRELOAD
+
+# Quick install
+
+1. You can install this into cargo lib path:
+
+```text
+cargo build --release
+mkdir -p $HOME/.cargo/lib
+cp -a target/release/libmemx_cdy.so target/release/libmemx_cdy.a $HOME/.cargo/lib
+```
+
+2. You can build debian package:
+
+```text
+cargo deb
+```
+
+and install **.deb** into your local repository of debian package.
+
+# Usage
+Easy to use, LD_PRELOAD.
+
+1. usecase: cargo install
+
+```text
+$ LD_PRELOAD=~/.cargo/lib/libmemx_cdy.so command
+```
+
+or
+
+```text
+$ export LD_PRELOAD=~/.cargo/lib/libmemx_cdy.so
+```
+
+2. usecase: debian package
+
+```text
+$ LD_PRELOAD=/usr/lib/libmemx_cdy.so.0.1 command
+```
+
+or
+
+```text
+$ export LD_PRELOAD=/usr/lib/libmemx_cdy.so.0.1
+```
+
+# 2-step of using on your rust source code
+
+1. add to dependences of Cargo.toml:
+
+```text
+[dependencies]
+memx-cdy = "0.1"
+```
+
+2. call `memx_init()` in main function
+
+```
+fn main() {
+    memx_cdy::memx_init();
+    //
+    // follow your code
+}
+```
+
+*/
+
 use libc::{c_int, c_void, size_t};
 
 /// This is the dummy function fot the easy linking.

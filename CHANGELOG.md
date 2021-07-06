@@ -2,6 +2,13 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+0.1.4 (2021-07-06)
+=====
+
+* rewrite doc
+* update licenses
+* update depends: memx(0.1.14)
+
 0.1.3 (2021-06-24)
 =====
 
