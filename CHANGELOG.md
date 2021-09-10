@@ -2,6 +2,12 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+0.1.6 (2021-09-11)
+=====
+
+* add: feature = "no_memcpy" cause by buggy memcpy() on new rustc
+* chg: default_feature has "no_memcpy"
+
 0.1.5 (2021-09-10)
 =====
 
