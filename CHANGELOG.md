@@ -2,6 +2,11 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+0.1.5 (2021-09-10)
+=====
+
+* update crates: mem(0.1.16), libc(0.2.101), semver(1.0.4)
+
 0.1.4 (2021-07-06)
 =====
 
