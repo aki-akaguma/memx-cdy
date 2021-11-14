@@ -71,7 +71,6 @@ fn main() {
 ```
 
 */
-
 use libc::{c_int, c_void, size_t};
 
 /// This is the dummy function fot the easy linking.

@@ -2,6 +2,11 @@ TBD
 ===
 Unreleased changes. Release notes have not yet been written.
 
+0.1.7 (2021-11-14)
+=====
+
+* update crates: memx(0.1.18)
+
 0.1.6 (2021-09-11)
 =====
 
