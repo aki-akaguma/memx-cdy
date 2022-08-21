@@ -62,7 +62,7 @@ memx-cdy = "0.1"
 
 2. call `memx_init()` in main function
 
-```
+```text
 fn main() {
     memx_cdy::memx_init();
     //
@@ -75,11 +75,11 @@ use libc::{c_int, c_void, size_t};
 
 /// This is the dummy function fot the easy linking.
 ///
-/// This `memx_init()` function do nothing. However, links are simplified. 
+/// This `memx_init()` function do nothing. However, links are simplified.
 ///
 /// # Example:
 /// In your binary package, the main function is like this.
-/// ```
+/// ```text
 /// fn main () {
 ///     memx_cdy::memx_init(); // fast mem operation.
 /// }
@@ -102,7 +102,7 @@ pub extern "C" fn memchr(cx: *const c_void, c: c_int, n: size_t) -> *mut c_void 
     let c = c as u8;
     match ::memx::memchr(buf, c) {
         Some(pos) => unsafe { buf.as_ptr().add(pos) as *mut c_void },
-        None => 0 as *mut c_void,
+        None => std::ptr::null_mut::<c_void>(),
     }
 }
 
@@ -112,7 +112,7 @@ pub extern "C" fn memrchr(cx: *const c_void, c: c_int, n: size_t) -> *mut c_void
     let c = c as u8;
     match ::memx::memrchr(buf, c) {
         Some(pos) => unsafe { buf.as_ptr().add(pos) as *mut c_void },
-        None => 0 as *mut c_void,
+        None => std::ptr::null_mut::<c_void>(),
     }
 }
 
@@ -151,7 +151,7 @@ pub extern "C" fn memmem(
     let needle = unsafe { std::slice::from_raw_parts(needle as *const u8, needlelen) };
     match ::memx::memmem(haystack, needle) {
         Some(pos) => unsafe { haystack.as_ptr().add(pos) as *mut c_void },
-        None => 0 as *mut c_void,
+        None => std::ptr::null_mut::<c_void>(),
     }
 }
 
@@ -170,6 +170,6 @@ pub extern "C" fn memcpy(dest: *mut c_void, src: *const c_void, n: size_t) -> *m
 pub extern "C" fn memset(dest: *mut c_void, c: c_int, n: size_t) -> *mut c_void {
     let buf = unsafe { std::slice::from_raw_parts_mut(dest as *mut u8, n) };
     let c = c as u8;
-    let _r = ::memx::memset(buf, c);
+    ::memx::memset(buf, c);
     dest
 }

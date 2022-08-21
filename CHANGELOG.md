@@ -1,6 +1,9 @@
-TBD
+TBD: memx-cdy
 ===
 Unreleased changes. Release notes have not yet been written.
+
+* fix clippy: this let-binding has unit value
+* fix clippy: `0 as *mut _` detected
 
 0.1.8 (2022-06-13)
 =====
