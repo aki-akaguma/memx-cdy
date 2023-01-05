@@ -1,57 +1,64 @@
-TBD: memx-cdy
-===
-Unreleased changes. Release notes have not yet been written.
+# Changelog: memx-cdy
 
-* fix clippy: this let-binding has unit value
-* fix clippy: `0 as *mut _` detected
+All notable changes to this project will be documented in this file.
 
-0.1.8 (2022-06-13)
-=====
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-changes to edition 2021
+## Unreleased
 
-0.1.7 (2021-11-14)
-=====
 
+## 0.1.9 (2023-01-05)
+### Changed
+* update crates: memx(0.1.23)
+
+### Fixed
+* clippy: this let-binding has unit value
+* clippy: `0 as *mut _` detected
+
+## 0.1.8 (2022-06-13)
+### Changed
+* change to edition 2021
+
+## 0.1.7 (2021-11-14)
+### Changed
 * update crates: memx(0.1.18)
 
-0.1.6 (2021-09-11)
-=====
+## 0.1.6 (2021-09-11)
+### Added
+* feature = "no_memcpy" cause by buggy memcpy() on new rustc
 
-* add: feature = "no_memcpy" cause by buggy memcpy() on new rustc
-* chg: default_feature has "no_memcpy"
+### Changed
+* default_feature has "no_memcpy"
 
-0.1.5 (2021-09-10)
-=====
-
+## 0.1.5 (2021-09-10)
+### Changed
 * update crates: mem(0.1.16), libc(0.2.101), semver(1.0.4)
 
-0.1.4 (2021-07-06)
-=====
-
+## 0.1.4 (2021-07-06)
+### Changed
 * rewrite doc
 * update licenses
 * update depends: memx(0.1.14)
 
-0.1.3 (2021-06-24)
-=====
-
+## 0.1.3 (2021-06-24)
+### Added
 * add memx_init(): for a easy linking
+
+### Fixed
 * bug: "ld: error: duplicate symbol: memcpy" in the case that target is "xxx-musl".
  - for the time being, i add `#[cfg(not(target_env = "musl"))]` to the `memcpy()`.
 
-0.1.2 (2021-06-23)
-=====
-
+## 0.1.2 (2021-06-23)
+### Changed
 * update crates: memx(0.1.13) - brush up
 
-0.1.1 (2021-06-20)
-=====
-
+## 0.1.1 (2021-06-20)
+### Added
 * add "staticlib" and "rlib" to crate-type
+
+### Changed
 * update crates: memx(0.1.12) - the important bugs fixed
 
-0.1.0 (2021-06-08)
-=====
-
-first commit
+## 0.1.0 (2021-06-08)
+* first commit

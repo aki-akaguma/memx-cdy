@@ -1,5 +1,7 @@
 
-all: README.md
+all: readme
+
+readme: README.md
 
 README.md: src/lib.rs
 	cargo readme > $@
