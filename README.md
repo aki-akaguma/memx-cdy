@@ -1,5 +1,10 @@
 # memx-cdy
 
+[![crate][crate-image]][crate-link]
+[![Docs][docs-image]][docs-link]
+![Rust Version][rustc-image]
+![Apache2/MIT licensed][license-image]
+
 c interface of memx: the fast memory functions like libc memcmp(), memchr(), memmem(), memcpy(), memset()
 
 ## Features
@@ -63,7 +68,7 @@ memx-cdy = "0.1"
 
 2. call `memx_init()` in main function
 
-```rust
+```
 fn main() {
     memx_cdy::memx_init();
     //
@@ -99,3 +104,12 @@ This project is licensed under either of
    https://opensource.org/licenses/MIT)
 
 at your option.
+
+[//]: # (badges)
+
+[crate-image]: https://img.shields.io/crates/v/memx-cdy.svg
+[crate-link]: https://crates.io/crates/memx-cdy
+[docs-image]: https://docs.rs/memx-cdy/badge.svg
+[docs-link]: https://docs.rs/memx-cdy/
+[rustc-image]: https://img.shields.io/badge/rustc-1.56+-blue.svg
+[license-image]: https://img.shields.io/badge/license-Apache2.0/MIT-blue.svg
