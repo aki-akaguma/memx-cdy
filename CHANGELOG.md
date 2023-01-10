@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased] *
 ### Added
 * badges into `README.tpl`
+* http link to `memx` on a document
 
 ### Changed
 * reformat `CHANGELOG.md`

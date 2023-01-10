@@ -5,7 +5,7 @@
 ![Rust Version][rustc-image]
 ![Apache2/MIT licensed][license-image]
 
-c interface of memx: the fast memory functions like libc memcmp(), memchr(), memmem(), memcpy(), memset()
+c interface of [`memx`](https://crates.io/crates/memx): the fast memory functions like libc memcmp(), memchr(), memmem(), memcpy(), memset()
 
 ## Features
 
