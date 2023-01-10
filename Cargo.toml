@@ -1,6 +1,6 @@
 [package]
 name = "memx-cdy"
-version = "0.1.9"
+version = "0.1.10"
 authors = ["aki <aki.akaguma@hotmail.com>"]
 edition = "2021"
 description = "The fast memory functions like a libc memcmp(), memchr(), memmem(), memcpy(), memset()"
