@@ -8,6 +8,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 
+## [0.1.13] (2023-10-09)
+###Changed
+* memcmp: if len < 4 then not call memx.
+
+### Fixed
+* `stack overflow` on first call of memcmp len=3.
+
 ## [0.1.12] (2023-02-13)
 ### Changed
 * refactored `Makefile`
@@ -89,7 +96,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [0.1.0] (2021-06-08)
 * first commit
 
-[Unreleased]: https://github.com/aki-akaguma/memx-cdy/compare/v0.1.12..HEAD
+[Unreleased]: https://github.com/aki-akaguma/memx-cdy/compare/v0.1.13..HEAD
+[0.1.13]: https://github.com/aki-akaguma/memx-cdy/compare/v0.1.12..v0.1.13
 [0.1.12]: https://github.com/aki-akaguma/memx-cdy/compare/v0.1.11..v0.1.12
 [0.1.11]: https://github.com/aki-akaguma/memx-cdy/compare/v0.1.10..v0.1.11
 [0.1.10]: https://github.com/aki-akaguma/memx-cdy/compare/v0.1.9..v0.1.10

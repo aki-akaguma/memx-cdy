@@ -122,7 +122,24 @@ use core::cmp::Ordering;
 pub extern "C" fn memcmp(cx: *const c_void, ct: *const c_void, n: size_t) -> c_int {
     let a = unsafe { std::slice::from_raw_parts(cx as *const u8, n) };
     let b = unsafe { std::slice::from_raw_parts(ct as *const u8, n) };
-    match ::memx::memcmp(a, b) {
+    let r = if n < 4 {
+        if n == 0 {
+            Ordering::Equal
+        } else {
+            let mut rr = a[0].cmp(&b[0]);
+            for x in 1..n {
+                rr = if rr == Ordering::Equal {
+                    a[x].cmp(&b[x])
+                } else {
+                    rr
+                };
+            }
+            rr
+        }
+    } else {
+        ::memx::memcmp(a, b)
+    };
+    match r {
         Ordering::Equal => 0 as c_int,
         Ordering::Less => -1 as c_int,
         Ordering::Greater => 1 as c_int,
@@ -173,3 +190,36 @@ pub extern "C" fn memset(dest: *mut c_void, c: c_int, n: size_t) -> *mut c_void 
     ::memx::memset(buf, c);
     dest
 }
+
+#[cfg(test)]
+mod test {
+    #[test]
+    fn test_memcmp_00() {
+        let pat_1 = vec![b'A', b'B', b'C'];
+        let pat_2 = vec![b'A', b'B', b'C'];
+        let pat_3 = vec![b'A', b'B', b'c'];
+        let p1 = pat_1.as_slice().as_ptr() as *const libc::c_void;
+        let p2 = pat_2.as_slice().as_ptr() as *const libc::c_void;
+        let p3 = pat_3.as_slice().as_ptr() as *const libc::c_void;
+        //
+        let r = super::memcmp(p1, p2, 3);
+        assert_eq!(r, 0);
+        let r = super::memcmp(p1, p3, 3);
+        assert_eq!(r, -1);
+    }
+    #[test]
+    fn test_memcmp_01() {
+        let pat_1 = vec![b'A', b'B', b'C', b'D'];
+        let pat_2 = vec![b'A', b'B', b'C', b'D'];
+        let pat_3 = vec![b'A', b'B', b'c', b'D'];
+        let p1 = pat_1.as_slice().as_ptr() as *const libc::c_void;
+        let p2 = pat_2.as_slice().as_ptr() as *const libc::c_void;
+        let p3 = pat_3.as_slice().as_ptr() as *const libc::c_void;
+        //
+        let r = super::memcmp(p1, p2, 4);
+        assert_eq!(r, 0);
+        let r = super::memcmp(p1, p3, 4);
+        assert_eq!(r, -1);
+    }
+}
+
