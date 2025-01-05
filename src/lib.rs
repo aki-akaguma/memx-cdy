@@ -174,7 +174,7 @@ pub extern "C" fn memmem(
 
 // bug: in the case that target is "xxx-musl",
 // bug: ld: error: duplicate symbol: memcpy
-#[cfg(all(not(arget_env = "musl"), not(feature = "no_memcpy")))]
+#[cfg(all(not(target_env = "musl"), not(feature = "no_memcpy")))]
 #[no_mangle]
 pub extern "C" fn memcpy(dest: *mut c_void, src: *const c_void, n: size_t) -> *mut c_void {
     let a = unsafe { std::slice::from_raw_parts_mut(dest as *mut u8, n) };
@@ -222,4 +222,3 @@ mod test {
         assert_eq!(r, -1);
     }
 }
-
