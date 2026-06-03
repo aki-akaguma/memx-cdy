@@ -1,104 +1,101 @@
 # Changelog: memx-cdy
-
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.2.0] (2025-09-24)
-###Changed
-* updated depend: memx(0.2.0)
-* rust-version = "1.65.0"
+## [0.2.0] - 2025-09-24
+### Changed
+- Dependency `memx` to 0.2.0.
+- Minimum Supported Rust Version (MSRV) to 1.65.0.
 
-## [0.1.13] (2023-10-09)
-###Changed
-* memcmp: if len < 4 then not call memx.
+## [0.1.13] - 2023-10-09
+### Changed
+- Bypass `memx` in `memcmp` for lengths less than 4.
 
 ### Fixed
-* `stack overflow` on first call of memcmp len=3.
+- `stack overflow` on initial `memcmp` call with length 3.
 
-## [0.1.12] (2023-02-13)
+## [0.1.12] - 2023-02-13
 ### Changed
-* refactored `Makefile`
+- `Makefile` structure and organization.
 
 ### Removed
-* `COPYING`
+- `COPYING` file.
 
 ### Fixed
-* `LICENSE-APACHE`, `LICENSE-MIT`
+- Licensing information in `LICENSE-APACHE` and `LICENSE-MIT`.
 
-## [0.1.11] (2023-01-31)
+## [0.1.11] - 2023-01-31
 ### Added
-* `.github/workflows/test-ubuntu.yml`
-* `.github/workflows/test-macos.yml`
-* `.github/workflows/test-windows.yml`
-* test status badges into `README.tpl`
-* `rust-version = "1.56.0"` into `Cargo.toml`
+- GitHub Actions workflows for Ubuntu, macOS, and Windows.
+- Test status badges to `README.tpl`.
+- Minimum Supported Rust Version (MSRV) of 1.56.0 to `Cargo.toml`.
 
-## [0.1.10] (2023-01-10)
+## [0.1.10] - 2023-01-10
 ### Added
-* badges into `README.tpl`
-* http link to `memx` on a document
+- Status badges to `README.tpl`.
+- Documentation link to `memx`.
 
 ### Changed
-* reformat `CHANGELOG.md`
+- `CHANGELOG.md` formatting for better readability.
 
-## [0.1.9] (2023-01-05)
+## [0.1.9] - 2023-01-05
 ### Changed
-* update crates: memx(0.1.23)
+- Dependency `memx` to 0.1.23.
 
 ### Fixed
-* clippy: this let-binding has unit value
-* clippy: `0 as *mut _` detected
+- Clippy warning regarding unit value let-bindings.
+- Clippy warning regarding `0 as *mut _`.
 
-## [0.1.8] (2022-06-13)
+## [0.1.8] - 2022-06-13
 ### Changed
-* change to edition 2021
+- Project to Rust 2021 edition.
 
-## [0.1.7] (2021-11-14)
+## [0.1.7] - 2021-11-14
 ### Changed
-* update crates: memx(0.1.18)
+- Dependency `memx` to 0.1.18.
 
-## [0.1.6] (2021-09-11)
+## [0.1.6] - 2021-09-11
 ### Added
-* feature = "no_memcpy" cause by buggy memcpy() on new rustc
+- `no_memcpy` feature to address buggy `memcpy()` in newer Rust versions.
 
 ### Changed
-* default_feature has "no_memcpy"
+- Default features to include `no_memcpy`.
 
-## [0.1.5] (2021-09-10)
+## [0.1.5] - 2021-09-10
 ### Changed
-* update crates: mem(0.1.16), libc(0.2.101), semver(1.0.4)
+- Dependencies `mem` to 0.1.16, `libc` to 0.2.101, and `semver` to 1.0.4.
 
-## [0.1.4] (2021-07-06)
+## [0.1.4] - 2021-07-06
 ### Changed
-* rewrite doc
-* update licenses
-* update depends: memx(0.1.14)
+- Documentation for clarity and completeness.
+- License files.
+- Dependency `memx` to 0.1.14.
 
-## [0.1.3] (2021-06-24)
+## [0.1.3] - 2021-06-24
 ### Added
-* add memx_init(): for a easy linking
+- `memx_init()` function for simplified linking.
 
 ### Fixed
-* bug: "ld: error: duplicate symbol: memcpy" in the case that target is "xxx-musl".
- - for the time being, i add `#[cfg(not(target_env = "musl"))]` to the `memcpy()`.
+- Duplicate symbol `memcpy` error when targeting `musl` by adding `#[cfg(not(target_env = "musl"))]`.
 
-## [0.1.2] (2021-06-23)
+## [0.1.2] - 2021-06-23
 ### Changed
-* update crates: memx(0.1.13) - brush up
+- Dependency `memx` to 0.1.13.
 
-## [0.1.1] (2021-06-20)
+## [0.1.1] - 2021-06-20
 ### Added
-* add "staticlib" and "rlib" to crate-type
+- `staticlib` and `rlib` to crate types.
 
 ### Changed
-* update crates: memx(0.1.12) - the important bugs fixed
+- Dependency `memx` to 0.1.12, including critical bug fixes.
 
-## [0.1.0] (2021-06-08)
-* first commit
+## [0.1.0] - 2021-06-08
+### Added
+- Initial release.
 
 [Unreleased]: https://github.com/aki-akaguma/memx-cdy/compare/v0.2.0..HEAD
 [0.2.0]: https://github.com/aki-akaguma/memx-cdy/compare/v0.1.13..v0.2.0
